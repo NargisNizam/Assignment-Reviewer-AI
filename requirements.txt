@@ -1,0 +1,6 @@
+langchain-core
+langchain-groq
+langgraph
+langsmith
+python-dotenv
+pydantic>=2,<3

@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Assignment Reviewer AI</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="/" class="brand">
+            <span class="brand-icon">✦</span>
+            Assignment Reviewer <span class="ai">AI</span>
+        </a>
+        <span class="status">AI-Powered Assistant</span>
+    </header>
+
+    <main class="container">
+
+        <section class="hero">
+            <span class="eyebrow">✦ YOUR SMART STUDY PARTNER</span>
+            <h1>Make every assignment <span>better.</span></h1>
+            <p>
+                Get helpful feedback on your assignments.
+                Improve clarity, structure and quality with AI.
+            </p>
+        </section>
+
+        <section class="review-card">
+
+            <div class="card-heading">
+                <div class="heading-icon">✎</div>
+                <div>
+                    <h2>Review your assignment</h2>
+                    <p>Enter your details to get started.</p>
+                </div>
+            </div>
+
+            <form id="assignmentForm"
+                  action="/review"
+                  method="post"
+                  enctype="multipart/form-data">
+
+                <div class="field">
+                    <label for="title">Assignment title</label>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="e.g. Introduction to Artificial Intelligence"
+                        required
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="description">Assignment description</label>
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="5"
+                        placeholder="Describe the assignment requirements..."
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="field">
+                    <label for="assignment_file">
+                        Upload assignment <span class="optional">(optional)</span>
+                    </label>
+
+                    <label for="assignment_file" class="upload-box">
+                        <span class="upload-icon">↑</span>
+                        <strong>Choose a file to upload</strong>
+                        <span class="upload-help">
+                            Click here to browse your computer
+                        </span>
+                        <span id="fileName" class="file-name">
+                            PDF, DOCX or TXT — supported formats depend on your backend
+                        </span>
+                    </label>
+
+                    <input
+                        type="file"
+                        id="assignment_file"
+                        name="assignment_file"
+                        class="file-input"
+                        accept=".pdf,.docx,.txt"
+                    >
+                </div>
+
+                <button type="submit" class="review-button">
+                    Review My Assignment <span>→</span>
+                </button>
+
+                <p class="privacy-note">
+                    ✧ Review your work and learn how to improve it.
+                </p>
+
+            </form>
+
+            <div id="result" class="result" aria-live="polite" hidden>
+                <h2>Review Results</h2>
+                <div id="resultContent"></div>
+            </div>
+
+        </section>
+
+        <section class="features">
+            <div class="feature">
+                <span>✦</span>
+                <div>
+                    <strong>Smart Feedback</strong>
+                    <p>Helpful suggestions for your work.</p>
+                </div>
+            </div>
+
+            <div class="feature">
+                <span>✓</span>
+                <div>
+                    <strong>Clear Evaluation</strong>
+                    <p>Understand what needs improvement.</p>
+                </div>
+            </div>
+
+            <div class="feature">
+                <span>♡</span>
+                <div>
+                    <strong>Learn & Improve</strong>
+                    <p>Build better assignment skills.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Assignment Reviewer AI · Built for smarter learning ✦</p>
+    </footer>
+
+    <script>
+        const fileInput = document.getElementById("assignment_file");
+        const fileName = document.getElementById("fileName");
+
+        fileInput.addEventListener("change", function () {
+            fileName.textContent = this.files.length
+                ? "Selected: " + this.files[0].name
+                : "PDF, DOCX or TXT — supported formats depend on your backend";
+        });
+    </script>
+
+</body>
+</html>
